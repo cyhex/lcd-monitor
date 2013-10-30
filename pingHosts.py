@@ -4,7 +4,8 @@ from lcdm.timer import LoopTimer
 
 hosts = [
     {'name': 'cyhex', 'url': 'http://www.cyhex.com'},
-    {'name': 'autorep', 'url': 'http://www.autoreparaturen.de'}
+    {'name': 'autorep', 'url': 'http://www.autoreparaturen.de'},
+    {'name': 'autorep1', 'url': 'http://www.autordasdasdeparaturen.de'}
 ]
 p = HttpPing(hosts)
 timer = LoopTimer(3)

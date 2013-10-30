@@ -53,11 +53,13 @@ class HttpPing(object):
     DEFAULT_TIMEOUT = 3
 
     def __init__(self, hosts):
+        """
+        Hosts:list of tupels [(host_name, url)]
+        """
         self.hosts = []
 
         for h in hosts:
-            he = HostEntity(h['name'], h['url'])
-            self.hosts.append(he)
+            self.hosts.append(HostEntity(*h))
 
     def ping(self):
 

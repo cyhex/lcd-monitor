@@ -12,7 +12,7 @@ class LoopTimer(object):
         set cycle duration in seconds
         """
         self.duration = duration
-        self.start = 0
+        self.start = time.time()
 
     def wait(self):
         elapsed = time.time() - self.start

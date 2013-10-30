@@ -40,6 +40,9 @@ class HostEntity(object):
     def is_online(self):
         return self.offline_since == 0
 
+    def get_lcd_formatted(self):
+        return "%s_%0.2f_%0.2f" % (self.name, self.get_last_time(), self.get_avg_time())
+
     def __repr__(self):
         if self.is_online():
             return "%s: %0.3fs %0.3fs" % (self.name, self.get_last_time(), self.get_avg_time())

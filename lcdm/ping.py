@@ -6,7 +6,7 @@ import time
 
 class HostEntity(object):
 
-    # simple moving response times average size
+    # simple moving average size
     SMA_SIZE = 10
 
     def __init__(self, name, url):

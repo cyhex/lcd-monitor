@@ -9,6 +9,9 @@ Config
 
     Edit pingHosts.py
 
+Run
+
+    python pingHosts.py
 
 
 pylcdsysinfo sdk:

@@ -13,12 +13,13 @@ hosts = [
 
 class DrawHosts(object):
     # main loop update time in seconds
-    CYCLE_TIME = 3
+    CYCLE_TIME = 1
 
     def __init__(self):
         self.timer = LoopTimer(self.CYCLE_TIME)
         self.run_flag = True
         self.hosts = [HostEntity(*h) for h in hosts]
+        # one thread per host
         self.pool = HttpPingWorkerPool(len(self.hosts))
 
         #RenderLcd6Rows(self.hosts)

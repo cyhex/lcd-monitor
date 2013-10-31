@@ -79,13 +79,11 @@ class HttpPingWorkerPool(object):
 
     def __init__(self, pool_size):
         """
-        Just a pool manager for HttpPingWorker
-        No work is been done at this point
+        Pool manager for HttpPingWorker
         """
         self.workers = []
         self.queue = Queue.Queue()
 
-        # create one thread per host
         for i in range(pool_size):
             t = HttpPingWorker(self.queue)
             t.setDaemon(True)

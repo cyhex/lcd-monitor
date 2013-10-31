@@ -1,17 +1,14 @@
-from duplicity.tarfile import _hole
 
 __author__ = 'gx'
-from lcdm.ping import HttpPingThreaded, HostEntity
+from lcdm.ping import HostEntity, HttpPingWorkerPool
 from lcdm.timer import LoopTimer
 from lcdm.pylcdsysinfo import LCDSysInfo, BackgroundColours, TextColours, TextLines
-import Queue
 
 hosts = [
     ('cyhex', 'http://www.cyhex.com'),
-    ('autorep', 'http://www.cyhex.com'),
+    ('autorep', 'http://www.autoreparaturen.de'),
     ('x', 'http://www.cxxxxex.com'),
 ]
-
 
 
 class DrawHosts(object):
@@ -21,9 +18,8 @@ class DrawHosts(object):
     def __init__(self):
         self.timer = LoopTimer(self.CYCLE_TIME)
         self.run_flag = True
-        self.host_queue = Queue.Queue()
         self.hosts = [HostEntity(*h) for h in hosts]
-
+        self.pool = HttpPingWorkerPool(len(self.hosts))
         #self.lcd = LCDSysInfo()
         #self.lcd.set_text_background_colour(BackgroundColours.BLACK)
         #self.lcd.set_brightness(255)
@@ -31,25 +27,15 @@ class DrawHosts(object):
 
     def run(self):
         while self.run_flag:
-
-            # create one thread per host
-            for i in range(len(self.hosts)):
-                t = HttpPingThreaded(self.host_queue)
-                t.setDaemon(True)
-                t.start()
-
-            for host in self.hosts:
-                self.host_queue.put(host)
-
-            # wait until all threads are done
-            self.host_queue.join()
+            # put jobs to ping
+            self.pool.put(self.hosts)
+            # wait till done
+            self.pool.wait()
 
             print self.hosts
 
-            # make sure we do not flood the servers...
+            # independent loop timer
             self.timer.wait()
-
-
 
 
 d = DrawHosts()

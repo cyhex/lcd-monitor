@@ -1,7 +1,32 @@
 __author__ = 'gx'
-from interface import RenderInterface
+"""
+@todo: if the file get bigger - refactor renderer per file
+
+"""
+
 from lcdm.ping import HostEntity
 from lcdm.pylcdsysinfo import LCDSysInfo, BackgroundColours, TextColours, TextLines
+
+class RenderInterface(object):
+
+    def __init__(self, hosts):
+        self.hosts = hosts
+
+    def render(self):
+        for host in self.hosts:
+            self.render_host(host)
+
+    def render_host(self, host):
+        pass
+
+
+class RenderConsole(RenderInterface):
+    """
+    render host to console (stdOut)
+    """
+    def render(self):
+        print self.hosts
+
 
 class RenderLcd6Rows(RenderInterface):
     """
@@ -15,7 +40,7 @@ class RenderLcd6Rows(RenderInterface):
         self.lcd.set_brightness(255)
         self.lcd.dim_when_idle(False)
 
-    def _renderHost(self, host):
+    def render_host(self, host):
         assert isinstance(host, HostEntity)
         line = self.get_line(host)
         self.lcd.clear_lines(line)

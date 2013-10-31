@@ -2,8 +2,7 @@
 __author__ = 'gx'
 from lcdm.ping import HostEntity, HttpPingWorkerPool
 from lcdm.timer import LoopTimer
-from lcdm.renders.console import RenderConsole
-from lcdm.renders.lcd import RenderLcd6Rows
+from lcdm.renderers import RenderLcd6Rows, RenderConsole
 
 hosts = [
     ('cyhex', 'http://www.cyhex.com'),

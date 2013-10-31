@@ -4,10 +4,7 @@ import time
 
 
 class LoopTimer(object):
-
-
     def __init__(self, duration):
-
         """
         set cycle duration in seconds
         """

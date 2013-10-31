@@ -1,4 +1,3 @@
-
 __author__ = 'gx'
 from lcdm.ping import HostEntity, HttpPingWorkerPool
 from lcdm.timer import LoopTimer
@@ -13,7 +12,7 @@ hosts = [
 
 class DrawHosts(object):
     # main loop update time in seconds
-    CYCLE_TIME = 1
+    CYCLE_TIME = 3
 
     def __init__(self):
         self.timer = LoopTimer(self.CYCLE_TIME)

@@ -5,7 +5,7 @@ __author__ = 'gx'
 """
 
 from lcdm.ping import HostEntity
-from lcdm.pylcdsysinfo import LCDSysInfo, BackgroundColours, TextColours, TextLines, TextAlignment
+from lcdm.pylcdsysinfo import LCDSysInfo, BackgroundColours, TextColours, TextLines, TextAlignment, large_image_indexes
 
 class RenderInterface(object):
 
@@ -36,10 +36,10 @@ class RenderLcd6Rows(RenderInterface):
         super(RenderLcd6Rows, self).__init__(hosts)
 
         self.lcd = LCDSysInfo()
+        self.lcd.display_icon(0, large_image_indexes[0])
         self.lcd.set_text_background_colour(BackgroundColours.BLACK)
         self.lcd.set_brightness(255)
         self.lcd.dim_when_idle(False)
-        self.lcd.clear_lines(TextLines.ALL, BackgroundColours.BLACK)
         self.lcd.display_text_on_line(TextLines.LINE_1, 'Host\tLast/Avg (s)', pad_for_icon=False, alignment=TextAlignment.LEFT, colour=TextColours.GREY)
 
     def render_host(self, host):

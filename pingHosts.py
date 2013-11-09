@@ -5,8 +5,9 @@ from lcdm.renderers import RenderLcd6Rows, RenderConsole
 
 hosts = [
     ('cyhex', 'http://www.cyhex.com'),
-    ('autorep', 'http://www.autoreparaturen.de'),
-    ('x', 'http://www.cxxxxex.com'),
+    ('Autorep', 'http://www.autoreparaturen.de'),
+    ('Blog', 'http://blog.autoreparaturen.de'),
+    ('Markt', 'http://autoteile-markt.de'),
 ]
 
 
@@ -22,7 +23,10 @@ class DrawHosts(object):
         self.pool = HttpPingWorkerPool(len(self.hosts))
 
         #RenderLcd6Rows(self.hosts)
-        self.renderers = [RenderConsole(self.hosts)]
+        self.renderers = [
+                            RenderConsole(self.hosts),
+                            RenderLcd6Rows(self.hosts)
+                         ]
 
 
     def run(self):
@@ -39,4 +43,4 @@ d = DrawHosts()
 try:
     d.run()
 except (KeyboardInterrupt, SystemExit):
-    d.run_flag = False;
+    d.run_flag = False

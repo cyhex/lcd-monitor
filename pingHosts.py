@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 __author__ = 'gx'
 from lcdm.ping import HostEntity, HttpPingWorkerPool
 from lcdm.timer import LoopTimer
@@ -24,7 +25,7 @@ class DrawHosts(object):
 
         #RenderLcd6Rows(self.hosts)
         self.renderers = [
-                            RenderConsole(self.hosts),
+                           # RenderConsole(self.hosts),
                             RenderLcd6Rows(self.hosts)
                          ]
 

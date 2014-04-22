@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+# !/usr/bin/env python
 __author__ = 'gx'
 from lcdm.ping import HostEntity, HttpPingWorkerPool
 from lcdm.timer import LoopTimer
@@ -10,7 +10,6 @@ hosts = [
     ('Blog', 'http://blog.autoreparaturen.de'),
     ('Markt', 'http://autoteile-markt.de'),
 ]
-
 
 class DrawHosts(object):
     # main loop update time in seconds
@@ -25,10 +24,9 @@ class DrawHosts(object):
 
         #RenderLcd6Rows(self.hosts)
         self.renderers = [
-                           # RenderConsole(self.hosts),
-                            RenderLcd6Rows(self.hosts)
-                         ]
-
+            # RenderConsole(self.hosts),
+            RenderLcd6Rows(self.hosts)
+        ]
 
     def run(self):
         while self.run_flag:
@@ -38,7 +36,6 @@ class DrawHosts(object):
 
             # independent loop timer
             self.timer.wait()
-
 
 d = DrawHosts()
 try:

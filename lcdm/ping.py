@@ -5,8 +5,8 @@ import time
 import threading
 import Queue
 
-class HostEntity(object):
 
+class HostEntity(object):
     # simple moving average size
     SMA_SIZE = 10
 
@@ -22,11 +22,11 @@ class HostEntity(object):
 
     def get_avg_time(self):
 
-        #cut times tail above SMA_SIZE
+        # cut times tail above SMA_SIZE
         if len(self.times) > self.SMA_SIZE:
-            self.times = self.times[self.SMA_SIZE*-1:]
+            self.times = self.times[self.SMA_SIZE * -1:]
 
-        return sum(self.times)/len(self.times)
+        return sum(self.times) / len(self.times)
 
     def set_offline(self):
         if self.offline_since == 0:
@@ -49,7 +49,6 @@ class HostEntity(object):
 
 
 class HttpPingWorker(threading.Thread):
-
     # in seconds
     DEFAULT_TIMEOUT = 3
 
@@ -75,8 +74,8 @@ class HttpPingWorker(threading.Thread):
 
             self.queue.task_done()
 
-class HttpPingWorkerPool(object):
 
+class HttpPingWorkerPool(object):
     def __init__(self, pool_size):
         """
         Pool manager for HttpPingWorker

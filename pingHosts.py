@@ -14,7 +14,7 @@ hosts = [
 
 class DrawHosts(object):
     # main loop update time in seconds
-    CYCLE_TIME = 3
+    CYCLE_TIME = 5
 
     def __init__(self):
         self.timer = LoopTimer(self.CYCLE_TIME)

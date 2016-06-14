@@ -5,10 +5,9 @@ from lcdm.timer import LoopTimer
 from lcdm.renderers import RenderLcd6Rows, RenderConsole
 
 hosts = [
-    ('cyhex', 'http://www.cyhex.com'),
-    ('Autorep', 'http://www.autoreparaturen.de'),
-    ('Blog', 'http://blog.autoreparaturen.de'),
-    ('Markt', 'http://autoteile-markt.de'),
+    ('www', 'http://www.bearch.de'),
+    ('test', 'http://test.bearch.de'),
+    ('unlimt', 'http://unlimited.bearch.de'),
 ]
 
 class DrawHosts(object):
@@ -24,8 +23,8 @@ class DrawHosts(object):
 
         #RenderLcd6Rows(self.hosts)
         self.renderers = [
-            # RenderConsole(self.hosts),
-            RenderLcd6Rows(self.hosts)
+            RenderConsole(self.hosts),
+            #RenderLcd6Rows(self.hosts)
         ]
 
     def run(self):
